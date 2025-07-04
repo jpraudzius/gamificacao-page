@@ -1,0 +1,167 @@
+header {
+  background-color: #f8f8f8; /* Cor de fundo do header */
+  padding: 15px 0; /* Espaçamento superior e inferior */
+}
+
+.container {
+  max-width: 1200px; /* Largura máxima do conteúdo do header */
+  margin: 0 auto; /* Centraliza o container horizontalmente */
+  display: flex; /* Para alinhar a logo e a navegação */
+  justify-content: space-between; /* Espaço máximo entre os itens */
+  align-items: center; /* Alinha verticalmente os itens ao centro */
+}
+
+.logo-container {
+  /* Não precisamos de posicionamento absoluto aqui, o flexbox cuidará do layout */
+}
+
+.logo {
+  height: 300px; /* Altura da logo (ajuste conforme necessário) */
+  /* A largura se ajustará automaticamente para manter a proporção */
+}
+
+nav ul {
+  list-style: none; /* Remove os marcadores de lista */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Alinha os itens da lista horizontalmente */
+}
+
+nav ul li {
+  margin-left: 20px; /* Espaçamento entre os itens de navegação */
+}
+
+nav ul li:first-child {
+  margin-left: 0; /* Remove a margem esquerda do primeiro item */
+}
+
+nav ul li a {
+  text-decoration: none; /* Remove o sublinhado dos links */
+  color: #ffffff; /* Cor dos links */
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #ffffff; /* Cor dos links ao passar o mouse */
+}
+
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+header {
+  height: 10px; /* Defina a altura desejada em pixels (ajuste conforme necessário) */
+  /* Outros estilos do seu header */
+}
+
+header {
+  background-color: #040720;
+  padding-top: 100px;    /* Diminuindo o padding superior */
+  padding-bottom: 100px; /* Diminuindo o padding inferior */
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center; /* Mantém a logo e a navegação alinhadas verticalmente */
+  justify-content: space-between;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+section {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #19416b;
+    text-align: center;
+    border-bottom: 2px solid #301212;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o Ranking */
+#ranking table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#ranking th, #ranking td {
+    border: 1px solid #ddd;
+    padding: 3px;
+    text-align: left;
+    font-size: small;
+}
+
+#ranking th {
+    background-color: #f2f2f2;
+}
+
+/* Estilos para o Destaque do Mês */
+#destaque-do-mes #vendedor-destaque {
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 3px;
+}
+
+#destaque-do-mes #vendedor-destaque p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Estilos para a Lista de Prêmios */
+#premios ul {
+    list-style: none;
+    padding: 0;
+}
+
+#premios li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#premios li:last-child {
+    border-bottom: none;
+}
+
+/* Estilos para o Resgate de Prêmios */
+#resgate-premios label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#resgate-premios select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#resgate-premios button {
+    background-color: #192d70;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#resgate-premios button:hover {
+    background-color: #288fcf;
+}
+
+#resgate-premios p#mensagem-resgate {
+    margin-top: 10px;
+    font-weight: bold;
+}

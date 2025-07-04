@@ -1,0 +1,273 @@
+body {
+    font-family: 'gg_sans', sans-serif; /* Assuming Stripe's font */
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+@font-face {
+    font-family: 'gg_sans';
+    src: url('gg_sans_font.woff2') format('woff2'); /* Replace with actual font file */
+    /* Add other font weights/styles if available */
+}
+
+.container {
+    max-width: 1280px; /* Wider container */
+    margin: 0 auto;
+    padding: 0 40px; /* More horizontal padding */
+}
+
+header {
+    background-color: white;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    height: 60px; /* Slightly larger logo */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 25px; /* More spacing between nav items */
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #555;
+    padding: 10px 12px; /* More padding */
+    font-size: 1rem;
+}
+
+header nav ul li a:hover {
+    color: #0570de; /* Stripe's blue */
+}
+
+header .actions {
+    display: flex;
+    align-items: center;
+}
+
+header .actions a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 20px;
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+header .actions .talk-to-sales {
+    background-color: #12204d; /* Stripe's blue */
+    color: white;
+    font-weight: 500;
+}
+
+header .actions .talk-to-sales:hover {
+    background-color: #a5b1bd;
+}
+
+main .hero {
+    padding: 100px 0; /* More padding */
+    /* Adjust the gradient to be more subtle or match the screenshot better */
+    background: linear-gradient(to right, #f0f2f5 45%, white 45%);
+}
+
+main .hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out left and right sections */
+}
+
+main .hero-left {
+    flex: 1;
+    padding-right: 60px; /* More spacing */
+}
+
+main .hero-left h1 {
+    font-size: 3.5em; /* Larger title */
+    margin-bottom: 25px;
+    color: #1e2732; /* Darker text */
+    line-height: 1.1;
+    font-weight: 600;
+}
+
+.gradient-text {
+    /* Initial color */
+    color: #57160b;
+    animation: gradientChange 5s infinite alternate; /* Apply the animation */
+}
+
+@keyframes gradientChange {
+    0% {
+        color: #103152; /* Start color */
+    }
+    100% {
+        color: #267026; /* End color (a purplish-blue, similar to Stripe's secondary color) */
+    }
+}
+
+main .hero-left p {
+    font-size: 1.15rem;
+    color: #5e6c84; /* Slightly lighter text */
+    line-height: 1.7;
+    margin-bottom: 40px;
+}
+
+main .hero .email-signup {
+    display: flex;
+}
+
+main .hero .email-signup input[type="email"] {
+    padding: 14px;
+    border: 1px solid #d6d9dc;
+    border-radius: 5px 0 0 5px;
+    width: 320px; /* Wider input */
+    font-size: 1rem;
+    color: #1e2732;
+}
+
+main .hero .email-signup .start-button {
+    background-color: #0e243a; /* Stripe's blue */
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+main .hero .email-signup .start-button:hover {
+    background-color: #045db1;
+}
+
+main .hero-right {
+    flex: 1;
+    padding-left: 60px; /* More spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.today-widget {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Softer shadow */
+    padding: 25px;
+    margin-bottom: 20px;
+    width: 380px; /* Wider widget */
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.rocket-widget {
+    display: flex;
+    align-items: center;
+    color: #132c46; /* Stripe's blue */
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.rocket-widget img {
+    height: 200px; /* Slightly larger icon */
+    margin-right: 8px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d6d9dc;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    padding: 8px;
+    outline: none;
+    font-size: 0.9rem;
+    color: #1e2732;
+    width: 150px; /* Adjust width as needed */
+}
+
+.search-bar img {
+    height: 18px;
+    margin-left: 8px;
+    color: #5e6c84;
+}
+
+.widget-content h2 {
+    color: #1e2732;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.metric {
+    margin-bottom: 20px;
+}
+
+.metric p {
+    color: #5e6c84;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.arrow-up {
+    color: #00c853; /* Green for positive */
+    margin-left: 5px;
+}
+
+.up-indicator {
+    color: #00c853;
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+
+.metric strong {
+    font-size: 1.4rem;
+    color: #1e2732;
+    font-weight: 600;
+}
+
+.metric small {
+    color: #98a2b3;
+    font-size: 0.8rem;
+}
+
+.chart img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+}
+
+footer {
+  background-color: rgb(255, 255, 255);
+  padding: 0px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

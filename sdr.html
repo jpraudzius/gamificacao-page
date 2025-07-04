@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamificação - Devalor</title>
+    <link rel="icon" href="Devalor.jpeg" type="">
+    <link rel="stylesheet" href="comercial.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="logodev.png" alt="Logotipo da Empresa" class="logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>            
+                    <li><a href="regrasdr.html">Regras SDR</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="ranking">
+            <h2>Ranking de SDR</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Vendedor</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-ranking"></tbody>
+            </table>
+        </section>
+
+        <section id="destaque-do-mes">
+            <h2>Destaques do Mês ⭐</h2>
+            <div id="vendedor-destaque">
+                <p id="primeiro-destaque"></p>
+                <p id="segundo-destaque"></p>
+                <p id="terceiro-destaque"></p>
+                <p id="quarto-destaque"></p>
+                <p id="quinto-destaque"></p> <!-- ✅ Corrigido: estava faltando -->
+            </div>
+        </section>
+
+        <section id="premios">
+            <h2>Lista de Prêmios</h2>
+            <ul id="lista-premios"></ul>
+        </section>
+    </main>
+
+    <script>
+        const vendedores = [
+            { id: 1, nome: "Alana", vendas: 1000, pontos: 8 },
+            { id: 2, nome: "Laura", vendas: 500, pontos: 0 },
+            { id: 3, nome: "Pedro", vendas: 0, pontos: 4 },
+            { id: 4, nome: "Sabrina", vendas: 0, pontos: 2 },
+            { id: 5, nome: "Talita", vendas: 0, pontos: 0 },
+        ]; 
+
+        const premios = [
+            { id: 104, nome: "1º Lugar: Folga integral dia 01/08/2025 + R$150,00.", pontos: 2000 },
+            { id: 105, nome: "2º Lugar: Meio período de folga dia 01/08/2025 + R$100,00", pontos: 1000 },
+        ];
+
+        function popularRanking() {
+            const tabelaRanking = document.getElementById('tabela-ranking');
+            tabelaRanking.innerHTML = ''; 
+
+            const rankingOrdenado = [...vendedores].sort((a, b) => b.pontos - a.pontos);
+
+            rankingOrdenado.forEach((vendedor, index) => {
+                const row = tabelaRanking.insertRow();
+                const posicaoCell = row.insertCell();
+                const nomeCell = row.insertCell();
+                const pontosCell = row.insertCell();
+
+                posicaoCell.textContent = index + 1;
+                nomeCell.textContent = vendedor.nome;
+                pontosCell.textContent = vendedor.pontos;
+            });
+        }
+
+        function definirDestaque() {
+            const ranking = [...vendedores].sort((a, b) => b.pontos - a.pontos);
+
+            document.getElementById('primeiro-destaque').textContent = `🥇 ${ranking[0].nome} — ${ranking[0].pontos} pontos`;
+            document.getElementById('segundo-destaque').textContent = `🥈 ${ranking[1].nome} — ${ranking[1].pontos} pontos`;
+            document.getElementById('terceiro-destaque').textContent = `🥉 ${ranking[2].nome} — ${ranking[2].pontos} pontos`;    
+            document.getElementById('quarto-destaque').textContent = `4º ${ranking[3].nome} — ${ranking[3].pontos} pontos`;
+            document.getElementById('quinto-destaque').textContent = `5º ${ranking[4].nome} — ${ranking[4].pontos} pontos`; 
+        }
+
+        function popularPremios() {
+            const listaPremios = document.getElementById('lista-premios');
+            listaPremios.innerHTML = '';
+
+            premios.forEach(premio => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${premio.nome}`;
+                listaPremios.appendChild(listItem);
+            });
+        }
+
+        // Inicialização
+        popularRanking();
+        definirDestaque();
+        popularPremios();
+    </script>
+</body>
+</html>

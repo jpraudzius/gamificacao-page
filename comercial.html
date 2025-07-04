@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamificação - Devalor</title>
+    <link rel="icon" href="Devalor.jpeg" type="">
+    <link rel="stylesheet" href="comercial.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="logodev.png" alt="Logotipo da Empresa" class="logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>            
+                    <li><a href="regracom.html">Regras Comerciais</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="ranking">
+            <h2>Ranking de Vendas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Vendedor</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-ranking"></tbody>
+            </table>
+        </section>
+
+        <section id="destaque-do-mes">
+            <h2>Destaques do Mês ⭐</h2>
+            <div id="vendedor-destaque">
+                <p id="primeiro-destaque"></p>
+                <p id="segundo-destaque"></p>
+                <p id="terceiro-destaque"></p> <!-- Adicionado -->
+                <p id="quarto-destaque"></p>   <!-- Adicionado -->
+            </div>
+        </section>
+
+        <section id="premios">
+            <h2>Lista de Prêmios</h2>
+            <ul id="lista-premios"></ul>
+        </section>
+    </main>
+
+    <script>
+        const vendedores = [
+            { id: 1, nome: "Alessandra", vendas: 1000, pontos: 5 },
+            { id: 2, nome: "Luciane", vendas: 500, pontos: 9 },
+            { id: 3, nome: "Raissa", vendas: 0, pontos: 9 },
+            { id: 4, nome: "Bruna", vendas: 0, pontos: 1 },
+        ]; 
+
+        const premios = [
+            { id: 104, nome: "1º Lugar: Folga integral dia 01/08/2025 + R$150,00.", pontos: 2000 },
+            { id: 104, nome: "2º Lugar: Meio período de folga dia 01/08/2025 + R$100,00", pontos: 1000 },
+        ];
+
+        function popularRanking() {
+            const tabelaRanking = document.getElementById('tabela-ranking');
+            tabelaRanking.innerHTML = ''; 
+
+            const rankingOrdenado = [...vendedores].sort((a, b) => b.pontos - a.pontos);
+
+            rankingOrdenado.forEach((vendedor, index) => {
+                const row = tabelaRanking.insertRow();
+                const posicaoCell = row.insertCell();
+                const nomeCell = row.insertCell();
+                const pontosCell = row.insertCell();
+
+                posicaoCell.textContent = index + 1;
+                nomeCell.textContent = vendedor.nome;
+                pontosCell.textContent = vendedor.pontos;
+            });
+        }
+
+        function definirDestaque() {
+            const ranking = [...vendedores].sort((a, b) => b.pontos - a.pontos);
+            const primeiro = ranking[0];
+            const segundo = ranking[1];
+            const terceiro = ranking[2];
+            const quarto = ranking[3];
+
+            document.getElementById('primeiro-destaque').textContent = `🥇 ${primeiro.nome} — ${primeiro.pontos} pontos`;
+            document.getElementById('segundo-destaque').textContent = `🥈 ${segundo.nome} — ${segundo.pontos} pontos`;
+            document.getElementById('terceiro-destaque').textContent = `🥉 ${terceiro.nome} — ${terceiro.pontos} pontos`;    
+            document.getElementById('quarto-destaque').textContent = `4º ${quarto.nome} — ${quarto.pontos} pontos`;
+        }
+
+        function popularPremios() {
+            const listaPremios = document.getElementById('lista-premios');
+            listaPremios.innerHTML = '';
+
+            premios.forEach(premio => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${premio.nome}`;
+                listaPremios.appendChild(listItem);
+            });
+        }
+
+        function popularResgate() {
+            const vendedorSelect = document.getElementById('vendedor-resgate');
+            const premioSelect = document.getElementById('premio-resgate');
+
+            vendedores.forEach(vendedor => {
+                const option = document.createElement('option');
+                option.value = vendedor.id;
+                option.textContent = vendedor.nome;
+                vendedorSelect.appendChild(option);
+            });
+
+            premios.forEach(premio => {
+                const option = document.createElement('option');
+                option.value = premio.id;
+                option.textContent = premio.nome;
+                premioSelect.appendChild(option); 
+            });
+        }
+
+        function resgatarPremio() {
+            const vendedorId = parseInt(document.getElementById('vendedor-resgate')?.value);
+            const premioId = parseInt(document.getElementById('premio-resgate')?.value);
+            const mensagemResgate = document.getElementById('mensagem-resgate');
+
+            const vendedor = vendedores.find(v => v.id === vendedorId);
+            const premio = premios.find(p => p.id === premioId);
+
+            if (!vendedor || !premio) {
+                mensagemResgate.textContent = "Selecione um vendedor e um prêmio válidos.";
+                return;
+            }
+
+            if (vendedor.pontos >= premio.pontos) {
+                vendedor.pontos -= premio.pontos;
+                mensagemResgate.textContent = `${vendedor.nome} resgatou "${premio.nome}"! Pontos restantes: ${vendedor.pontos}`;
+                popularRanking();
+                definirDestaque();
+            } else {
+                mensagemResgate.textContent = `${vendedor.nome} não tem pontos suficientes para resgatar "${premio.nome}".`;
+            }
+        }
+
+        // Inicialização
+        popularRanking();
+        definirDestaque();
+        popularPremios();
+        popularResgate();
+    </script>
+</body>
+</html>
