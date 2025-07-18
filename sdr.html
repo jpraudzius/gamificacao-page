@@ -46,7 +46,6 @@
                 <p id="segundo-destaque"></p>
                 <p id="terceiro-destaque"></p>
                 <p id="quarto-destaque"></p>
-                <p id="quinto-destaque"></p> <!-- ✅ Corrigido: estava faltando -->
             </div>
         </section>
 
@@ -94,7 +93,6 @@
             document.getElementById('segundo-destaque').textContent = `🥈 ${ranking[1].nome} — ${ranking[1].pontos} pontos`;
             document.getElementById('terceiro-destaque').textContent = `🥉 ${ranking[2].nome} — ${ranking[2].pontos} pontos`;    
             document.getElementById('quarto-destaque').textContent = `4º ${ranking[3].nome} — ${ranking[3].pontos} pontos`;
-            document.getElementById('quinto-destaque').textContent = `5º ${ranking[4].nome} — ${ranking[4].pontos} pontos`; 
         }
 
         function popularPremios() {
